@@ -3,6 +3,15 @@ MAINTAINER Austin
 
 ENV PYTHONUNBUFFERED 1
 
+# What PIP installs need to get done?
+COPY ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
+# Copy local directory to target new docker directory
+RUN mkdir /app
+WORKDIR /app
+COPY ./app /app
+
 # Install node
 RUN apt-get update && apt-get -y install nodejs
 RUN apt-get install npm -y
@@ -35,23 +44,14 @@ RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
 ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
-
-# What PIP installs need to get done?
-COPY django_project/requirements.txt /requirements.txt
-RUN pip install -r /requirements.txt
-
-
-
-# Copy local directory to target new docker directory
-RUN mkdir -p /django_project
-WORKDIR /django_project
-COPY ./django_project /django_project
-
-
 # Make Postgres Work
 EXPOSE 5432/tcp
 
 
-WORKDIR /django_project
-
+# Install Gulp CLI
+WORKDIR /app
 RUN npm install gulp-cli -g
+
+# Install Node Modules
+WORKDIR /app
+RUN npm install

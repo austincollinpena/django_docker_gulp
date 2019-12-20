@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+#      We need all of these ports open to get browsersync to work
     ports:
       - "8002:8000"
       - "3001:3001"
@@ -12,7 +13,7 @@ services:
       - "3002:3002"
       - "3003:3003"
     volumes:
-      - ./django_project:/django_project
+      - ./app:/app
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
     restart: always
@@ -21,6 +22,7 @@ services:
   db:
     image: postgres
     environment:
+#      TODO: Fix this password
       POSTGRES_PASSWORD: example1
     ports:
       - "5432:5432"
