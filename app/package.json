@@ -1,0 +1,40 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/register": "^7.7.4",
+    "autoprefixer": "^9.7.3",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-if": "^3.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "vinyl-named": "^1.1.0",
+    "webpack-stream": "^5.2.1",
+    "yargs": "^15.0.2"
+  },
+  "dependencies": {
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-preset-env": "^6.7.0"
+  },
+  "browserslist": [
+    "defaults",
+    "IE 11",
+    "IE_Mob 11",
+    "maintained node versions",
+    "ie 6-10",
+    "Firefox > 20"
+  ]
+}
